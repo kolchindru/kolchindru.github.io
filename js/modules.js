@@ -1,96 +1,96 @@
 const example_data = {
     "result": [
         {
-            "name": "Article1.txt",
+            "name": "Article1.pdf",
             "link": "https://www.ohchr.org/en/udhr/documents/udhr_translations/eng.pdf"
         },
 
         {
-            "name": "Article2.txt",
+            "name": "Article2.pdf",
             "link": "https://www.echr.coe.int/documents/convention_eng.pdf"
         },
 
         {
-            "name": "Article3.txt",
+            "name": "Article3.pdf",
             "link": "https://www.unhcr.org/4ca34be29.pdf"
         },
         {
-            "name": "Article4.txt",
+            "name": "Article4.pdf",
             "link": "https://www.icc-cpi.int/nr/rdonlyres/aDD16852-aee9-4757-aBe7-9CDC7Cf02886/283503/romestatuteng1.pdf"
         },
 
         {
-            "name": "Article5.txt",
+            "name": "Article5.pdf",
             "link": "https://www.unodc.org/documents/middleeastandnorthafrica/organised-crime/UNITED_NATIONS_CONVENTION_AGAINST_TRANSNATIONAL_ORGANIZED_CRIME_AND_THE_PROTOCOLS_THERETO.pdf"
         },
 
         {
-            "name": "Article6.txt",
+            "name": "Article6.pdf",
             "link": "https://www.echr.coe.int/documents/convention_eng.pdf"
         },
         {
-            "name": "Article7.txt",
-            "link": "https://www.echr.coe.int/documents/convention_eng.pdf"
-        },
-
-        {
-            "name": "Article8.txt",
+            "name": "Article7.pdf",
             "link": "https://www.echr.coe.int/documents/convention_eng.pdf"
         },
 
         {
-            "name": "Article9.txt",
-            "link": "https://www.echr.coe.int/documents/convention_eng.pdf"
-        },
-        {
-            "name": "Article10.txt",
+            "name": "Article8.pdf",
             "link": "https://www.echr.coe.int/documents/convention_eng.pdf"
         },
 
         {
-            "name": "Article11.txt",
+            "name": "Article9.pdf",
+            "link": "https://www.echr.coe.int/documents/convention_eng.pdf"
+        },
+        {
+            "name": "Article10.pdf",
             "link": "https://www.echr.coe.int/documents/convention_eng.pdf"
         },
 
         {
-            "name": "Article12.txt",
-            "link": "https://www.echr.coe.int/documents/convention_eng.pdf"
-        },
-        {
-            "name": "Article13.txt",
+            "name": "Article11.pdf",
             "link": "https://www.echr.coe.int/documents/convention_eng.pdf"
         },
 
         {
-            "name": "Article14.txt",
+            "name": "Article12.pdf",
+            "link": "https://www.echr.coe.int/documents/convention_eng.pdf"
+        },
+        {
+            "name": "Article13.pdf",
             "link": "https://www.echr.coe.int/documents/convention_eng.pdf"
         },
 
         {
-            "name": "Article15.txt",
-            "link": "https://www.echr.coe.int/documents/convention_eng.pdf"
-        },
-        {
-            "name": "Article16.txt",
+            "name": "Article14.pdf",
             "link": "https://www.echr.coe.int/documents/convention_eng.pdf"
         },
 
         {
-            "name": "Article17.txt",
+            "name": "Article15.pdf",
+            "link": "https://www.echr.coe.int/documents/convention_eng.pdf"
+        },
+        {
+            "name": "Article16.pdf",
             "link": "https://www.echr.coe.int/documents/convention_eng.pdf"
         },
 
         {
-            "name": "Article18.txt",
-            "link": "https://www.echr.coe.int/documents/convention_eng.pdf"
-        },
-        {
-            "name": "Article19.txt",
+            "name": "Article17.pdf",
             "link": "https://www.echr.coe.int/documents/convention_eng.pdf"
         },
 
         {
-            "name": "Article20.txt",
+            "name": "Article18.pdf",
+            "link": "https://www.echr.coe.int/documents/convention_eng.pdf"
+        },
+        {
+            "name": "Article19.pdf",
+            "link": "https://www.echr.coe.int/documents/convention_eng.pdf"
+        },
+
+        {
+            "name": "Article20.pdf",
             "link": "https://www.echr.coe.int/documents/convention_eng.pdf"
         }
     ]
