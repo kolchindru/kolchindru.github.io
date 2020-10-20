@@ -19,9 +19,9 @@
   <link rel="stylesheet" href="vex/vex.css" />
   <link rel="stylesheet" href="vex/vex-theme-default.css" />
 
-  <link rel="stylesheet" href="css/video-js.css" type="text/css" />
-  <link rel="stylesheet" href="css/video-js-skin.css" type="text/css" />
-  <link rel="stylesheet" href="css/videoplayer.css" type="text/css" />
+  <link rel="stylesheet" href="css/style.css" type="text/css" />
+  <link rel="stylesheet" href="css/skin.css" type="text/css" />
+  <link rel="stylesheet" href="css/stylesheet.css" type="text/css" />
 
   <script type="text/javascript" src='js/pdf.min.js'></script>
   <script type="text/javascript" src='js/pdf.worker.min.js'></script>
@@ -35,7 +35,6 @@
 <body class="archive-page">
   <div class="wrapper">
     <div class="fluid-container">
-      <!--BEGIN header-->
       <header class="archive-header">
         <h1 class="archive-header__title">Skoltech article search</h1>
         <div class="archive-header__logo">
@@ -49,19 +48,17 @@
         <div class="archive-column archive-column--right">
           <div class="paging">
             <div id='mediamenu'>
-              <!-- buttons for lessons -->
             </div>
           </div>
           <div class="lesson-list">
             <div id='medialist'>
-              <!-- buttons for each video in lesson -->
             </div>
           </div>
         </div>
         <div class="archive-column">
           <div class="archive-visual embed-responsive">
             <div id="video">
-              <canvas id="mediaplayer"></video>
+              <iframe id="mediaplayer"></iframe>
             </div>
           </div>
         </div>
