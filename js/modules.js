@@ -99,10 +99,8 @@ const example_data = {
 function search_request(query) {
 
   return new Promise(function(resolve, reject) {
-    var slug = get_slug();
     var xhr = new XMLHttpRequest();
-    var url='https://app.ru/v1/query?query=' + query;
-    //var url='http://127.0.0.1:5000/v1/video-access?email=' + email + '&slug=' + slug;
+    var url='https://damp-meadow-03187.herokuapp.com/search_by_query?query=' + query;
     xhr.open('GET', url, true);
 
     // 400, 404 — no need to retry, 403 — may be retied
@@ -129,15 +127,16 @@ function search_request(query) {
 
 async function load_player() {
     var query = await search_query("Example: Perceptual deep depth super-resolution");
-    // var result = await search_request(query);
-    var result = example_data;
+    var result = await search_request(query);
+    result = result['response'];
+    // var result = example_data;
     if ('error' in result) {
       show_alert("Oops, something went wrong. Server response: " + JSON.stringify(result));
     }
 
-    var firts_article = example_data['result'][0];
+    var firts_article = result['result'][0];
     singleArticle(firts_article);
 
     // Создание списка всех видеозаписей
-    createMedialist(example_data, 'mediamenu', 'medialist');
+    createMedialist(result, 'mediamenu', 'medialist');
 }

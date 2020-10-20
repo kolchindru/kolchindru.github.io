@@ -1,6 +1,6 @@
 function singleArticle(article) {
-    console.log("web/viewer.html?file=https://cors-anywhere.herokuapp.com/" + article['link']);
-    $("#mediaplayer").attr("src", "web/viewer.html?file=https://cors-anywhere.herokuapp.com/" + article['link']);
+    console.log("web/viewer.html?file=https://cors-anywhere.herokuapp.com/" + "https://damp-meadow-03187.herokuapp.com/" + article['link']);
+    $("#mediaplayer").attr("src", "web/viewer.html?file=https://cors-anywhere.herokuapp.com/" + "https://damp-meadow-03187.herokuapp.com/" + article['link']);
 }
 
 // Функция создания кнопки
