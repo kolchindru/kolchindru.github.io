@@ -6,4 +6,4 @@ Deploy this system on heroku (https://github.com/Glebzok/FSE_server), get the li
 
 In modules.js change `app_link` to your heroku app link
 
-Visit `<your_username>`.github.io
+Visit <your_username>.github.io
