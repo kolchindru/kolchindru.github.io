@@ -3,7 +3,6 @@ function singleArticle(article) {
     $("#mediaplayer").attr("src", "web/viewer.html?file=https://cors-anywhere.herokuapp.com/" + "https://damp-meadow-03187.herokuapp.com/" + article['link']);
 }
 
-// Функция создания кнопки
 function createButton(name, value, spanned = false) {
     var button = document.createElement('button');
     if (spanned) {
@@ -19,14 +18,12 @@ function createButton(name, value, spanned = false) {
     return button;
 }
 
-// Функция отображения списка видео для одного занятия
 function showPage(id) {
     var current_lesson = document.getElementById(id);
     var list = document.getElementById("medialist");
     list.insertBefore(current_lesson, list.childNodes[0]);
 }
 
-// Создание кнопки для занятий
 function createPage(lesson, menu) {
     var page_button = createButton((lesson), "opt" + lesson.toString());
     page_button.addEventListener("click", function() {
@@ -82,7 +79,6 @@ function createPagination(array) {
     return result_array;
 }
 
-// Создание меню с видео
 function createMedialist(data, menu_id, list_id) {
     var list = document.getElementById(list_id);
     var menu = document.getElementById(menu_id);

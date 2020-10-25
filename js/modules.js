@@ -1,3 +1,5 @@
+const app_link = 'https://damp-meadow-03187.herokuapp.com/';
+
 const example_data = {
     "result": [
         {
@@ -100,15 +102,15 @@ function search_request(query) {
 
   return new Promise(function(resolve, reject) {
     var xhr = new XMLHttpRequest();
-    var url='https://damp-meadow-03187.herokuapp.com/search_by_query?query=' + query;
+    var url= app_link + 'search_by_query?query=' + query;
     xhr.open('GET', url, true);
 
     // 400, 404 — no need to retry, 403 — may be retied
     xhr.onload = function() {
       if(this.status==200) {
         resolve(JSON.parse(this.responseText));
-      } else if(this.status==403) {
-        resolve(JSON.parse(this.responseText));
+      } else if(this.status==403 || this.status==400) {
+        resolve(this.responseText);
       } else {
         var error = new Error(this.statusText);
         error.code = this.status;
@@ -128,15 +130,16 @@ function search_request(query) {
 async function load_player() {
     var query = await search_query("Example: Perceptual deep depth super-resolution");
     var result = await search_request(query);
-    result = result['response'];
+
     // var result = example_data;
-    if ('error' in result) {
-      show_alert("Oops, something went wrong. Server response: " + JSON.stringify(result));
+    if (result.includes("error")) {
+      result = await show_alert("Oops, something went wrong. Please contact develoers.");
+      console.log(result);
     }
+    result = result['response'];
 
     var firts_article = result['result'][0];
     singleArticle(firts_article);
 
-    // Создание списка всех видеозаписей
     createMedialist(result, 'mediamenu', 'medialist');
 }
