@@ -130,12 +130,12 @@ function search_request(query) {
 async function load_player() {
     var query = await search_query("Example: Perceptual deep depth super-resolution");
     var result = await search_request(query);
-
-    // var result = example_data;
-    if (result.includes("error")) {
-      result = await show_alert("Oops, something went wrong. Please contact develoers.");
-      console.log(result);
-    }
+    // console.log(result);
+    // // var result = example_data;
+    // if (result.includes("error")) {
+    //   result = await show_alert("Oops, something went wrong. Please contact develoers.");
+    //   console.log(result);
+    // }
     result = result['response'];
 
     var firts_article = result['result'][0];
