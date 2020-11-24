@@ -1,0 +1,7 @@
+AddType application/x-httpd-php htm html
+
+FallbackResource /index.html
+
+<IfModule mod_headers.c>
+    Header set Access-Control-Allow-Origin: *
+</IfModule>
