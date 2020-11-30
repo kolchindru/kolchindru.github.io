@@ -4,12 +4,18 @@
   <script src="https://vjs.zencdn.net/7.8.2/video.min.js"></script>
 </head>
 <body>
-    <video id="story_video" class="video-js vjs-default-skin vjs-16-9 vjs-big-play-centered" controls width="500" height="281" poster="">
-        <p class="vjs-no-js">
-            To view this video please enable JavaScript, and consider upgrading to a web browser that
-            <a href="https://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
-        </p>
-    </video>
+  <script>
+  fetch('https://d3fsf52nfl88kq.cloudfront.net/test/test.json')
+  .then(response => response.json())
+  .then(data => console.log(data));
+  </script>
+
+  <video id="story_video" class="video-js vjs-default-skin vjs-16-9 vjs-big-play-centered" controls width="500" height="281" poster="">
+      <p class="vjs-no-js">
+          To view this video please enable JavaScript, and consider upgrading to a web browser that
+          <a href="https://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
+      </p>
+  </video>
 
 </body>
 
