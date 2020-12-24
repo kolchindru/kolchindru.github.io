@@ -1,8 +1,97 @@
-function singleArticle(article) {
-    console.log("web/viewer.html?file=https://cors-anywhere.herokuapp.com/" + "https://damp-meadow-03187.herokuapp.com/" + article['link']);
-    $("#mediaplayer").attr("src", "web/viewer.html?file=https://cors-anywhere.herokuapp.com/" + "https://damp-meadow-03187.herokuapp.com/" + article['link']);
+function keyify(arbitary_key){
+    var key = arbitary_key.repeat(16).slice(0, 16)
+    key = CryptoJS.enc.Utf8.parse(key);
+    return key
 }
 
+function decrypt(ciphertextStr, arbitary_key) {
+    var key = keyify(arbitary_key);
+    var ciphertext = CryptoJS.enc.Base64.parse(ciphertextStr);
+
+    // split IV and ciphertext
+    var iv = ciphertext.clone();
+    iv.sigBytes = 16;
+    iv.clamp();
+    ciphertext.words.splice(0, 4); // delete 4 words = 16 bytes
+    ciphertext.sigBytes -= 16;
+
+    // decryption
+    var decrypted = CryptoJS.AES.decrypt({ciphertext: ciphertext}, key, {
+        iv: iv
+    });
+    return decrypted.toString(CryptoJS.enc.Utf8);
+}
+
+/* Функция создания адреса файла */
+function address(file, slug, selfmade, html5 = false, zip = false, hls_debug = true) {
+    if (hls_debug) {
+      html5 = false;
+      selfmade = true;
+    }
+    /* Данные из Amazon Cloudfront */
+    var webDist = "https://d35raauzs56ob1.cloudfront.net/";
+    var hlsDist = "https://d2mtbe6k2can1m.cloudfront.net/";
+    var zipDist = "https://d3kif91e92qv66.cloudfront.net/";
+
+    if (zip) {
+        return zipDist + decrypt(file.trim(), slug);
+    }
+    if (selfmade) {
+        var folder = "video/";
+    } else {
+        var folder = "";
+    }
+    if (html5) {
+        return webDist + folder + decrypt(file.trim(), slug);
+    } else {
+        console.log(hlsDist + folder + decrypt(file.trim(), slug));
+        return hlsDist + folder + decrypt(file.trim(), slug);
+    }
+}
+
+// Функция создания плеера без плейлиста Videojs
+function singlePlayer(json, slug, html5 = true, hls_debug = true) {
+  if (hls_debug) {
+    html5 = false;
+  }
+    var setup = {
+        controls: true,
+        width: "100%",
+        height: "100%",
+        preload: "auto",
+        aspectRatio: "16:9",
+        fluid: true,
+        playbackRates: [1, 1.25, 1.5]
+    };
+
+    if (html5) {
+        setup.sources = [{
+            src: address(json["path"], slug, json['selfmade'], html5 = true),
+            type: 'video/mp4'
+        }];
+    } else {
+        console.log("running ok");
+        setup.sources = [{
+            src: address(json["path"], slug, json['selfmade'], html5 = false),
+            type: "application/x-mpegURL"
+        }];
+    }
+    console.log(setup);
+
+    if (typeof player !== 'undefined') {
+        player.pause();
+        player.src({
+            type: setup.sources[0].type,
+            src: setup.sources[0].src
+        });
+        player.load();
+        player.play();
+    } else {
+        player = videojs('mediaplayer', setup);
+    }
+}
+
+// Функция создания кнопки
 function createButton(name, value, spanned = false) {
     var button = document.createElement('button');
     if (spanned) {
@@ -18,16 +107,18 @@ function createButton(name, value, spanned = false) {
     return button;
 }
 
-function showPage(id) {
+// Функция отображения списка видео для одного занятия
+function showLesson(id) {
     var current_lesson = document.getElementById(id);
     var list = document.getElementById("medialist");
     list.insertBefore(current_lesson, list.childNodes[0]);
 }
 
-function createPage(lesson, menu) {
-    var page_button = createButton((lesson), "opt" + lesson.toString());
-    page_button.addEventListener("click", function() {
-        showPage(this.value);
+// Создание кнопки для занятий
+function createLesson(lesson, menu) {
+    var lesson_button = createButton((lesson), "opt" + lesson.toString());
+    lesson_button.addEventListener("click", function() {
+        showLesson(this.value);
         var current = menu.getElementsByClassName("active");
         if (current.length > 0) {
             current[0].className = current[0].className.replace(" active", "");
@@ -36,21 +127,27 @@ function createPage(lesson, menu) {
     })
 
     if (lesson == 1) {
-        page_button.className += " active";
+        lesson_button.className += " active";
     }
 
-    return page_button
+    return lesson_button//{
 }
 
 // Создание списка видео внутри одного занятия
-function createReader(video_json, list) {
-    var video_button = createButton(video_json['name'], JSON.stringify(video_json), true);
+function createVideo(video_json, list, tech, slug) {
+    var video_button = createButton(video_json['title'], JSON.stringify(video_json), true);
 
     video_button.addEventListener("click", function() {
         let json = JSON.parse(this.value);
-
-        singleArticle(json);
-
+        if (json.zip) {
+            let zip_url = json.file;
+            let zip_frame = $("<iframe/>").attr({
+                src: zip_url,
+                style: "visibility:hidden;display:none"
+            }).appendTo(video_button);
+        } else {
+            singlePlayer(json, slug, html5 = tech);
+        }
         let current = list.getElementsByClassName("active");
         if (current.length > 0) {
             current[0].className = current[0].className.replace(" active", "");
@@ -61,51 +158,34 @@ function createReader(video_json, list) {
     return video_button
 }
 
-function createPagination(array) {
-    var index = 0;
-    var arrayLength = array.length;
-    var tempArray = [];
-
-    for (index = 0; index < arrayLength; index += 5) {
-        myChunk = array.slice(index, index+5);
-        tempArray.push(myChunk);
-    }
-
-    result_array = [];
-
-    for (i = 0; i < tempArray.length; i++){
-      result_array.push({"page": i + 1, "files": tempArray[i]});
-    }
-    return result_array;
-}
-
-function createMedialist(data, menu_id, list_id) {
+// Создание меню с видео
+function createMedialist(data, slug, menu_id, list_id) {
+    console.log(slug);
     var list = document.getElementById(list_id);
     var menu = document.getElementById(menu_id);
 
-    var articles = data['result'];
+    var videos = data['result']['video']
+    var tech = data['result']['tech']
 
-    articles = createPagination(articles);
+    for (i = 0; i < videos.length; i++) {
+        let lesson = videos[i]['lesson'];
+        let files = videos[i]['files'];
 
-    for (i = 0; i < articles.length; i++) {
-        let page = articles[i]['page']
-        let files = articles[i]['files'];
-
-        let page_button = createPage(page, menu);
-        var doc_list = document.createElement('div');
-        doc_list.className = "option";
-        doc_list.id = "opt" + page.toString();
+        let lesson_button = createLesson(lesson, menu);
+        var video_list = document.createElement('div');
+        video_list.className = "option";
+        video_list.id = "opt" + lesson.toString();
 
         for (j = 0; j < files.length; j++) {
             let file = files[j];
-            let pdf_element = createReader(file, list);
-            if (page == 1 &&  j == 0) {
-              pdf_element.className += " active";
+            let video_element = createVideo(file, list, tech, slug);
+            if (lesson == 1 &&  j == 0) {
+              video_element.className += " active";
             }
-            doc_list.appendChild(pdf_element);
+            video_list.appendChild(video_element);
         }
 
-        menu.append(page_button);
-        list.append(doc_list);
+        menu.append(lesson_button);
+        list.append(video_list);
     }
 }

@@ -1,145 +1,129 @@
-const app_link = 'https://damp-meadow-03187.herokuapp.com/';
+// // Messages
+// const example_data = {
+//     "result": {
+//         "tech": true,
+//         "video": [{
+//                 "files": [{
+//                         "path": "online/RVT/RVT_19.20.03_L1-1_Interface.mp4",
+//                         "selfmade": true,
+//                         "title": "1-1. Interface"
+//                     },
+//                     {
+//                         "path": "CBL/CBL_8.17.09_L1_Landscape.mp4",
+//                         "selfmade": true,
+//                         "title": "1-2. Blank"
+//                     },
+//                     {
+//                         "path": "online/RVT/RVT_19.20.03_L1-3_Modify.mp4",
+//                         "selfmade": true,
+//                         "title": "1-3. Modify"
+//                     }
+//                 ],
+//                 "lesson": 1
+//             },
+//             {
+//                 "files": [{
+//                         "path": "online/RVT/RVT_19.20.03_L2-1_Levels.mp4",
+//                         "selfmade": true,
+//                         "title": "2-5. Levels"
+//                     },
+//                     {
+//                         "path": "online/RVT/RVT_19.20.03_L2-2_Axis.mp4",
+//                         "selfmade": true,
+//                         "title": "2-6. Axis"
+//                     },
+//                     {
+//                         "path": "online/RVT/RVT_19.20.03_L2-3_Filters.mp4",
+//                         "selfmade": true,
+//                         "title": "2-7. Filters"
+//                     }
+//                 ],
+//                 "lesson": 2
+//             },
+//             {
+//                 "files": [{
+//                         "path": "online/RVT/RVT_19.20.03_L4-1_Stair.mp4",
+//                         "selfmade": true,
+//                         "title": "3-13. 1 View Properties"
+//                     },
+//                     {
+//                         "path": "online/RVT/RVT_19.20.03_L3_2_Elevation_Section.mp4",
+//                         "selfmade": true,
+//                         "title": "3-14. 2 Elevation Section"
+//                     },
+//                     {
+//                         "path": "online/RVT/RVT_19.20.03_L3_3_Floor.mp4",
+//                         "selfmade": true,
+//                         "title": "3-15. 3 Floor"
+//                     }
+//                 ],
+//                 "lesson": 3
+//             }
+//         ]
+//     }
+// }
 
+// Messages
 const example_data = {
-    "result": [
-        {
-            "name": "Article1.pdf",
-            "link": "https://www.ohchr.org/en/udhr/documents/udhr_translations/eng.pdf"
-        },
-
-        {
-            "name": "Article2.pdf",
-            "link": "https://www.echr.coe.int/documents/convention_eng.pdf"
-        },
-
-        {
-            "name": "Article3.pdf",
-            "link": "https://www.unhcr.org/4ca34be29.pdf"
-        },
-        {
-            "name": "Article4.pdf",
-            "link": "https://www.icc-cpi.int/nr/rdonlyres/aDD16852-aee9-4757-aBe7-9CDC7Cf02886/283503/romestatuteng1.pdf"
-        },
-
-        {
-            "name": "Article5.pdf",
-            "link": "https://www.unodc.org/documents/middleeastandnorthafrica/organised-crime/UNITED_NATIONS_CONVENTION_AGAINST_TRANSNATIONAL_ORGANIZED_CRIME_AND_THE_PROTOCOLS_THERETO.pdf"
-        },
-
-        {
-            "name": "Article6.pdf",
-            "link": "https://www.echr.coe.int/documents/convention_eng.pdf"
-        },
-        {
-            "name": "Article7.pdf",
-            "link": "https://www.echr.coe.int/documents/convention_eng.pdf"
-        },
-
-        {
-            "name": "Article8.pdf",
-            "link": "https://www.echr.coe.int/documents/convention_eng.pdf"
-        },
-
-        {
-            "name": "Article9.pdf",
-            "link": "https://www.echr.coe.int/documents/convention_eng.pdf"
-        },
-        {
-            "name": "Article10.pdf",
-            "link": "https://www.echr.coe.int/documents/convention_eng.pdf"
-        },
-
-        {
-            "name": "Article11.pdf",
-            "link": "https://www.echr.coe.int/documents/convention_eng.pdf"
-        },
-
-        {
-            "name": "Article12.pdf",
-            "link": "https://www.echr.coe.int/documents/convention_eng.pdf"
-        },
-        {
-            "name": "Article13.pdf",
-            "link": "https://www.echr.coe.int/documents/convention_eng.pdf"
-        },
-
-        {
-            "name": "Article14.pdf",
-            "link": "https://www.echr.coe.int/documents/convention_eng.pdf"
-        },
-
-        {
-            "name": "Article15.pdf",
-            "link": "https://www.echr.coe.int/documents/convention_eng.pdf"
-        },
-        {
-            "name": "Article16.pdf",
-            "link": "https://www.echr.coe.int/documents/convention_eng.pdf"
-        },
-
-        {
-            "name": "Article17.pdf",
-            "link": "https://www.echr.coe.int/documents/convention_eng.pdf"
-        },
-
-        {
-            "name": "Article18.pdf",
-            "link": "https://www.echr.coe.int/documents/convention_eng.pdf"
-        },
-        {
-            "name": "Article19.pdf",
-            "link": "https://www.echr.coe.int/documents/convention_eng.pdf"
-        },
-
-        {
-            "name": "Article20.pdf",
-            "link": "https://www.echr.coe.int/documents/convention_eng.pdf"
-        }
-    ]
+    "result": {
+        "tech": true,
+        "video": [{
+                "files": [{
+                        "path": "TST/TST_1.01.01 L1_Test_09a45770/index.m3u8",
+                        "selfmade": true,
+                        "title": "1-1. Lesson I"
+                    }
+                ],
+                "lesson": 1
+            },
+            {
+                "files": [{
+                        "path": "TST/TST_1.01.01_L1_Test_07d06ec5/index.m3u8",
+                        "selfmade": true,
+                        "title": "2-2. Lesson II"
+                    }
+                ],
+                "lesson": 2
+            },
+            {
+                "files": [{
+                        "path": "TST/TST_1.01.01_L1_Test_165729e8/index.m3u8",
+                        "selfmade": true,
+                        "title": "3-3. Lesson III"
+                    }
+                ],
+                "lesson": 3
+            }
+        ]
+    }
 }
 
-function search_request(query) {
-
-  return new Promise(function(resolve, reject) {
-    var xhr = new XMLHttpRequest();
-    var url= app_link + 'search_by_query?query=' + query;
-    xhr.open('GET', url, true);
-
-    // 400, 404 — no need to retry, 403 — may be retied
-    xhr.onload = function() {
-      if(this.status==200) {
-        resolve(JSON.parse(this.responseText));
-      } else if(this.status==403 || this.status==400) {
-        resolve(this.responseText);
-      } else {
-        var error = new Error(this.statusText);
-        error.code = this.status;
-        reject(error);
-      }
-    };
-
-    xhr.onerror = function() {
-      reject(new Error("Network Error"));
-    };
-
-    xhr.send();
-  });
+// Модуль запускается в случае неудачной авторизации
+function unsuccess_module(redirect = false) {
+    if (redirect) {
+        location.href = "https://softculture.cc";
+    } else {
+        location.reload();
+    }
 }
 
+// Модуль запускается в случае удачной авторизации
+function success_module(video_data, mail) {
+    console.log('Login successful');
+    // TO DO: добавить Fingerprinting и авторизация в Метрике
+    load_player(video_data);
+}
 
-async function load_player() {
-    var query = await search_query("Example: Perceptual deep depth super-resolution");
-    var result = await search_request(query);
-    // console.log(result);
-    // // var result = example_data;
-    // if (result.includes("error")) {
-    //   result = await show_alert("Oops, something went wrong. Please contact develoers.");
-    //   console.log(result);
-    // }
-    result = result['response'];
+// Загрузка плеера и списка видеозаписей
+function load_player(video_data) {
+    console.log(video_data);
+    // Загрузка плеера с первым видео
+    var first_video = video_data['result']['video'][0]['files'][0];
+    var tech = example_data['result']['tech'];
+    // var slug = extractSlug();
+    var slug = "tst10101"
+    singlePlayer(first_video, slug, html5 = tech);
 
-    var firts_article = result['result'][0];
-    singleArticle(firts_article);
-
-    createMedialist(result, 'mediamenu', 'medialist');
+    // Создание списка всех видеозаписей
+    createMedialist(video_data, slug, 'mediamenu', 'medialist');
 }
