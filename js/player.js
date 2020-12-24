@@ -44,8 +44,10 @@ function address(file, slug, selfmade, html5 = false, zip = false, hls_debug = t
     if (html5) {
         return webDist + folder + decrypt(file.trim(), slug);
     } else {
-        console.log(hlsDist + folder + decrypt(file.trim(), slug));
-        return hlsDist + folder + decrypt(file.trim(), slug);
+        var path = decrypt(file.trim(), slug);
+        path = path.slice(0, -4);
+        path = path + "/index.m3u8"
+        return hlsDist + folder + path;
     }
 }
 
