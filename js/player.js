@@ -91,14 +91,14 @@ function singlePlayer(json, slug, html5 = true, hls_debug = true) {
     } else {
         player = videojs('mediaplayer', setup);
         var keyPrefix = "key://";
+        var urlTpl = "https://softculture-streaming.s3-eu-west-1.amazonaws.com/{key}";
         player.on("loadstart", function (e) {
           player.tech().hls.xhr.beforeRequest = function(options) {
               // required for detecting only the key requests
-              console.log("yooooooo" + options.uri);
               if (!options.uri.startsWith(keyPrefix)) { return; }
               options.headers = options.headers || {};
               optopns.headers["Custom-Header"] = "value";
-              //options.uri = urlTpl.replace("{key}", options.uri.substring(keyPrefix.length));
+              options.uri = urlTpl.replace("{key}", options.uri.substring(keyPrefix.length));
           };
         });
     }
