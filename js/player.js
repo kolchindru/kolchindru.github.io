@@ -30,7 +30,7 @@ function address(file, slug, selfmade, html5 = false, zip = false, hls_debug = t
     }
     /* Данные из Amazon Cloudfront */
     var webDist = "https://d35raauzs56ob1.cloudfront.net/";
-    var hlsDist = "https://d2mtbe6k2can1m.cloudfront.net/";
+    var hlsDist = "https://d13g42gjj7lr3a.cloudfront.net/";
     var zipDist = "https://d3kif91e92qv66.cloudfront.net/";
 
     if (zip) {
