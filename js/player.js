@@ -90,6 +90,17 @@ function singlePlayer(json, slug, html5 = true, hls_debug = true) {
         player.play();
     } else {
         player = videojs('mediaplayer', setup);
+        var keyPrefix = "key://";
+        player.on("loadstart", function (e) {
+          player.tech().hls.xhr.beforeRequest = function(options) {
+              // required for detecting only the key requests
+              if (!options.uri.startsWith(keyPrefix)) { return; }
+              options.headers = options.headers || {};
+              optopns.headers["Custom-Header"] = "value";
+              console.log("yooooooo" + options.uri);
+              //options.uri = urlTpl.replace("{key}", options.uri.substring(keyPrefix.length));
+          };
+        });
     }
 }
 
