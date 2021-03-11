@@ -97,7 +97,7 @@ function singlePlayer(json, slug, html5 = true, hls_debug = true) {
               // required for detecting only the key requests
               if (!options.uri.startsWith(keyPrefix)) { return; }
               options.headers = options.headers || {};
-              optopns.headers["Custom-Header"] = "value";
+              options.headers["Custom-Header"] = "value";
               options.uri = urlTpl.replace("{key}", options.uri.substring(keyPrefix.length));
           };
         });
